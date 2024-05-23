@@ -1,0 +1,120 @@
+﻿@model IEnumerable<OOAD_PROJECT.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+@Html.Raw(TempData["Delete Message"])
+<div class="container-fluid">
+    <h1 class="mt-4">Customers Registered</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Customer Details</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            DataTable Example
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Customername)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerE_Mail)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerPhoneNo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Passward)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.City)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Customername)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerE_Mail)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerPhoneNo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Passward)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.City)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customername)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerE_Mail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerPhoneNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Passward)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "DetailsCustomer", new { id = item.Customerid }) |
+                                    @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.Customerid })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

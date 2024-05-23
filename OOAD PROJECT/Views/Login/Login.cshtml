@@ -1,0 +1,59 @@
+﻿@model OOAD_PROJECT.Models.LoginAll
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <main>
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                        <h2>@ViewBag.message</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-horizontal">
+                                <h4>LOGINALL</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-5" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Passward, htmlAttributes: new { @class = "control-label col-md-5" })
+                                    <div class="col-md-10">
+                                        <input type="password"
+                                               @Html.EditorFor(model => model.Passward, new { htmlAttributes = new { @class = "form-control" } })
+                                               @Html.ValidationMessageFor(model => model.Passward, "", new { @class = "text-danger" }) />
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <input type="submit" value="Create" class="btn btn-default bg-dark text-light" />
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+}
+
+
+
+

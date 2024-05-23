@@ -1,0 +1,57 @@
+﻿@model OOAD_PROJECT.Models.Invoice
+@{
+    ViewBag.Title = "getuertoconfirm";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Price")
+        </th>
+        <th>
+            @Html.DisplayName("Payment")
+        </th>
+        <th>
+            @Html.DisplayName("Date")
+        </th>
+        <th>
+            @Html.DisplayName("Action")
+        </th>
+        <th></th>
+    </tr>
+    @{
+        foreach (System.Data.DataRow item in ViewBag.Product.Rows)
+        {
+            <tr>
+                <td>
+                    @item["user"]
+                </td>
+                <td>
+                    @item["TotalPrice"]
+                </td>
+                <td>
+                    @item["Payment"]
+                </td>
+                <td>
+                    @item["Date"]
+                </td>
+                <td>
+                    @if (Convert.ToInt32(@item["Status"]) == 1)
+                    {
+                        <span class="btn btn-success">Approve</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("ConfirmOrder","DashBoard", new { id = @item["Id"]})"> <span class="btn btn-info">Pending</span></a>
+                    }
+                </td>
+            </tr>
+
+        }
+    }
+</table>
+
+

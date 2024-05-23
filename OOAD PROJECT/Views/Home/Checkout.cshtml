@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<div class="container">
+    @if (TempData["Total"] == null)
+    {
+        <h1 class="mt-4">Cart Is Empty</h1>
+        <a href="@Url.Action("HomeView","Home")">Back To Home Page</a>
+
+    }
+    else
+    {
+        <div class="row">
+
+
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <td></td>
+                                <th>Product id</th>
+                                <th>Product name</th>
+                                <th>Single Product Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in TempData["cart"] as List<OOAD_PROJECT.Models.Cart>)
+                            {
+                                <tr class="text-center">
+                                    <td class="product-remove"><a href="@Url.Action("remove","Home", new { id = item.ProductId})"><span class="fa fa-close"></span></a></td>
+                                    <td class="product-name">
+                                        <h3>@item.ProductId</h3>
+                                    </td>
+
+                                    <td class="product-name">
+                                        <h3>@item.ProductName</h3>
+                                    </td>
+
+                                    <td class="price">$@item.SingleProductPrice</td>
+
+                                    <td class="quantity">
+                                        @*<div class="input-group mb-3">
+                                                <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+                                            </div>*@
+                                        @item.Qunatity
+                                    </td>
+
+                                    <td class="total">$@item.Subtotal</td>
+                                </tr><!-- END TR-->
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Cart Totals</h3>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span>$@TempData["Total"]</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("CUSTOMERS"))
+        {
+            using (Html.BeginForm())
+            {
+                <input type="email" name="Email" placeholder="Enter Email" required="" class="form-control col-md-6" />
+                <input type="text" name="Address" placeholder="Enter Address" required="" class="form-control col-md-6" />
+                <input type="number" name="ContactNo" placeholder="Enter ContactNo" required="" class="form-control col-md-6" />
+                <textarea name="Note" placeholder="Enter your message/note" class="form-control col-md-6"></textarea>
+                <input type="submit" value="checkout Now" class="btn btn-primary py-3 px-4" />
+            }
+
+        }
+    }
+    else
+    {
+        <a href="@Url.Action("Login","DashBoard")" class="btn btn-primary py-3 px-4">Login</a>
+        <a href="@Url.Action("Create","Home")" class="btn btn-primary py-3 px-4">Register</a>
+    }
+</div>
+

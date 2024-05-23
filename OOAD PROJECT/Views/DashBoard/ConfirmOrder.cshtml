@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmOrder";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+@{
+    foreach (System.Data.DataRow item in ViewBag.Product.Rows)
+    {
+        using (Html.BeginForm())
+        {
+            <p>
+                <input type="number" value="@item["Id"]" name="id"/>
+            </p>
+            <p>
+                <input type="number" value="@item["userid"]" name="userid"/>
+            </p>
+            <p>
+                <input type="number" value="@item["TotalPrice"]" name="price"/>
+            </p>
+            <p>
+                <input type="text" value="@item["Payment"]" name="payment"/>
+            </p>
+            <p>
+                <input type="datetime" value="@item["Date"]" name="date"/>
+            </p>
+
+             <input type="submit" value="Confirm Order" class="btn btn-success"/>
+            
+
+        }
+    }
+}

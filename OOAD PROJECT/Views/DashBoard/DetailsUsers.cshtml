@@ -1,0 +1,43 @@
+﻿@model OOAD_PROJECT.Models.LoginAll
+
+@{
+    ViewBag.Title = "DetailsUsers";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<h2>DetailsUsers</h2>
+
+<div>
+    <h4>LoginAll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passward)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Roles)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

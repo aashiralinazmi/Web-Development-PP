@@ -1,0 +1,83 @@
+﻿@model OOAD_PROJECT.Models.Customer
+
+@{
+    ViewBag.Title = "DetailsCustomer";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<h2>DetailsCustomer</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerE_Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerE_Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passward)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Customerid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
